@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPm Escape Velocity Workspace</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Material Icons & Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .mono-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-16">
+
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <!-- Click this controller icon 5 times to reveal hidden settings -->
+                <div onclick="triggerSecretConsole()" class="p-2 bg-blue-600/20 text-blue-400 rounded-lg border border-blue-500/30 cursor-pointer active:scale-95 transition-transform" title="Admin access trigger">
+                    <span class="material-icons select-none">sports_esports</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight">RPm Escape Velocity Workspace</h1>
+                    <p class="text-xs text-slate-400">Career &amp; Habit transition platform • June – Sept 2026</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center gap-4">
+                <div class="flex items-center gap-3 bg-slate-950 px-4 py-2 rounded-xl border border-slate-800">
+                    <div class="text-left">
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Player Status</p>
+                        <h4 id="char-level" class="text-xs font-extrabold text-amber-400">Level 1: Sleep Novice</h4>
+                    </div>
+                    <div class="w-24 bg-slate-800 h-2 rounded-full overflow-hidden relative border border-slate-700">
+                        <div id="xp-bar" class="bg-gradient-to-r from-amber-500 to-yellow-400 h-full transition-all duration-350" style="width: 0%;"></div>
+                    </div>
+                    <span id="xp-display" class="text-[11px] text-slate-400 font-mono font-bold">0/150 XP</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm bg-slate-950 px-3 py-1.5 rounded-full border border-slate-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="text-slate-400">Current Phase: <strong id="current-phase-badge" class="text-emerald-400 font-medium">Phase 1 (July 2026)</strong></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN GRID CONTAINER -->
+    <main class="max-w-6xl mx-auto px-4 mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <div class="lg:col-span-1 space-y-6">
+            <!-- MORNING MANIFESTO BANNER -->
+            <div class="bg-gradient-to-br from-blue-950 to-slate-900 rounded-2xl p-5 border border-blue-900/50 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 text-blue-900/10 pointer-events-none">
+                    <span class="material-icons style-text" style="font-size: 140px;">anchor</span>
+                </div>
+                <div class="flex items-center gap-2 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">
+                    <span class="material-icons text-sm">wb_sunny</span> Morning Power-Up
+                </div>
+                <h2 class="text-xl font-bold mb-3 tracking-tight">The Reality Anchor</h2>
+                <p id="stoic-quote" class="text-slate-300 text-sm leading-relaxed italic mb-4">
+                    "You have power over your mind - not outside events. Realize this, and you will find strength."
+                </p>
+                <div class="flex justify-between items-center">
+                    <span id="stoic-author" class="text-xs text-slate-400 font-semibold uppercase">— Marcus Aurelius</span>
+                    <button onclick="newStoicQuote()" class="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 bg-blue-900/30 px-2 py-1 rounded border border-blue-800/40 transition">
+                        <span class="material-icons text-xs">refresh</span> Next Anchor
+                    </button>
+                </div>
+            </div>
+
+            <!-- TIMELINE OVERVIEW -->
+            <div class="bg-slate-900 rounded-2xl p-5 border border-slate-800 shadow-xl">
+                <h3 class="text-sm font-semibold tracking-wide text-slate-300 mb-4 flex items-center gap-2">
+                    <span class="material-icons text-slate-400">hourglass_empty</span>
+                    Temporal Alignment
+                </h3>
+                <div class="space-y-4 text-xs">
+                    <div class="relative pl-6 border-l-2 border-emerald-500">
+                        <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                        <h4 class="font-bold text-emerald-400">PHASE 1: July 2026</h4>
+                        <p class="text-slate-400 mt-0.5">Focus: Fix sleep mechanics, eliminate clutter, read during dead work hours.</p>
+                    </div>
+                    <div class="relative pl-6 border-l-2 border-slate-700">
+                        <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-700"></div>
+                        <h4 class="font-bold text-slate-300">PHASE 2: August 2026</h4>
+                        <p class="text-slate-500 mt-0.5">Focus: Map 3 Universities, calculate exact financial metrics, update CV.</p>
+                    </div>
+                    <div class="relative pl-6 border-l-2 border-slate-700">
+                        <div class="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-slate-700"></div>
+                        <h4 class="font-bold text-slate-300">PHASE 3: September 2026</h4>
+                        <p class="text-slate-500 mt-0.5">Focus: Shift alarm to 6:00 AM, expand Japanese, initialize meditation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STOP LIST PANEL -->
+            <div class="bg-slate-900 rounded-2xl p-5 border border-slate-800 shadow-xl">
+                <h3 class="text-sm font-semibold text-rose-400 mb-3 flex items-center gap-2">
+                    <span class="material-icons">block</span> The Absolute Stop List
+                </h3>
+                <ul class="space-y-2 text-xs text-slate-300 leading-relaxed">
+                    <li class="flex gap-2">
+                        <span class="text-rose-500 font-bold">•</span>
+                        <span><strong>No alarm shock:</strong> Do not set alarms to 6:00 AM yet. Keep your morning winnable at 6:30 AM.</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-rose-500 font-bold">•</span>
+                        <span><strong>No handwriting/meditation practices:</strong> These are low-leverage clutter tasks. Remove them entirely.</span>
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-rose-500 font-bold">•</span>
+                        <span><strong>No mental looping:</strong> Stop thinking about the 4-year PhD plan. Focus completely on the next 90 days.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-6">
+            <!-- DAILY CHECKLIST & STREAKS -->
+            <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold tracking-tight">Phase 1 Daily Habits</h2>
+                        <p class="text-xs text-slate-400">Earn +10 XP per habit check. Your progression data persists locally.</p>
+                    </div>
+                    <div class="text-right">
+                        <span id="streak-counter" class="text-2xl font-black text-amber-400 mono-font">0</span>
+                        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Active Win Streak</p>
+                    </div>
+                </div>
+
+                <!-- 5-MINUTE DESK CLEAR TIMER COMPONENT -->
+                <div class="mb-6 p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="material-icons text-amber-500">timer</span>
+                        <div>
+                            <h4 class="text-xs font-bold">5-Minute Desk Clear Helper</h4>
+                            <p class="text-[11px] text-slate-400">Put away exactly 3 items. Clean until the timer drops.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="timer-display" class="text-lg font-mono font-bold bg-slate-900 px-3 py-1 rounded border border-slate-800">05:00</span>
+                        <button id="timer-btn" onclick="toggleTimer()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-4 py-2 rounded-lg font-semibold transition">
+                            Start Clear
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC HABITS LIST CONTAINER -->
+                <div id="habits-list-container" class="space-y-3">
+                    <!-- Dynamic habits injected here -->
+                </div>
+
+                <div class="mt-5 flex justify-between items-center text-xs text-slate-400">
+                    <span id="streak-info">Complete all 3 habits to increment your daily escape streak.</span>
+                    <button onclick="resetDailyCheckboxes()" class="text-rose-400 hover:text-rose-300 underline bg-transparent border-none cursor-pointer">Clear Checklist</button>
+                </div>
+            </div>
+
+            <!-- GAMIFIED CAMPAIGN QUEST BOARD -->
+            <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold tracking-tight flex items-center gap-2">
+                            <span class="material-icons text-amber-400">military_tech</span>
+                            Campaign Quest Board
+                        </h2>
+                        <p class="text-xs text-slate-400">Complete quests to level up. Phase 2 and 3 require unlocking.</p>
+                    </div>
+                    <div class="flex gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-850">
+                        <button onclick="switchQuestTab(1)" id="tab-btn-1" class="text-xs px-3 py-1.5 rounded-lg font-bold transition bg-blue-600 text-white">July</button>
+                        <button onclick="switchQuestTab(2)" id="tab-btn-2" class="text-xs px-3 py-1.5 rounded-lg font-bold transition text-slate-400 hover:text-slate-200">August</button>
+                        <button onclick="switchQuestTab(3)" id="tab-btn-3" class="text-xs px-3 py-1.5 rounded-lg font-bold transition text-slate-400 hover:text-slate-200">Sept</button>
+                    </div>
+                </div>
+
+                <!-- QUEST CARDS WRAPPER -->
+                <div id="quest-board-content" class="relative min-h-[220px]">
+                    <!-- Dynamic quest elements injected here -->
+                </div>
+            </div>
+
+            <!-- CLINICAL MASTER'S PROGRAM DATABASE -->
+            <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-indigo-600/20 text-indigo-400 rounded-lg border border-indigo-500/30">
+                            <span class="material-icons">school</span>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold tracking-tight">Clinical Master's Program Database</h2>
+                            <p class="text-xs text-slate-400">Weaponize your Saturday morning 1-hour sessions here.</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleModal(true)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-1.5 rounded-lg flex items-center gap-1 font-semibold transition">
+                        <span class="material-icons text-sm">add</span> New College
+                    </button>
+                </div>
+
+                <!-- CARDS CONTAINER -->
+                <div id="university-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Dynamic content gets loaded here from LocalStorage -->
+                </div>
+
+                <!-- EMBEDDED CV MATRIX -->
+                <div class="mt-6 border-t border-slate-800 pt-6">
+                    <h3 class="text-sm font-bold text-slate-300 mb-3">RPm High-Leverage CV Checklist</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <label class="flex items-center gap-2.5 p-2 bg-slate-950 rounded-lg border border-slate-800">
+                            <input type="checkbox" id="cv-opt-1" class="rounded text-blue-600 bg-slate-900 border-slate-700">
+                            <span class="text-slate-400">Add Data-Cleaning &amp; Tool Validation metrics</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 p-2 bg-slate-950 rounded-lg border border-slate-800">
+                            <input type="checkbox" id="cv-opt-2" class="rounded text-blue-600 bg-slate-900 border-slate-700">
+                            <span class="text-slate-400">Emphasize clinical test administration accuracy</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 p-2 bg-slate-950 rounded-lg border border-slate-800">
+                            <input type="checkbox" id="cv-opt-3" class="rounded text-blue-600 bg-slate-900 border-slate-700">
+                            <span class="text-slate-400">Quantify your diagnostic test client caseload</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 p-2 bg-slate-950 rounded-lg border border-slate-800">
+                            <input type="checkbox" id="cv-opt-4" class="rounded text-blue-600 bg-slate-900 border-slate-700">
+                            <span class="text-slate-400">Draft Clinical Psychology statement outline</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOWNTIME READING INCUBATION LOG -->
+            <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-amber-600/20 text-amber-400 rounded-lg border border-amber-500/30">
+                            <span class="material-icons">menu_book</span>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold tracking-tight">Workplace Dead-Time Reading Log</h2>
+                            <p class="text-xs text-slate-400">Read an article during silent hours. Earns +20 XP per log.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 mb-4 flex flex-col md:flex-row items-center gap-4">
+                    <input type="text" id="reading-input" placeholder="Title of article or paper read today..." class="w-full bg-slate-900 border border-slate-850 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500">
+                    <button onclick="addReadingLog()" class="bg-amber-600 hover:bg-amber-500 text-white text-xs px-4 py-2 rounded-xl font-semibold shrink-0 transition flex items-center gap-1">
+                        <span class="material-icons text-sm">add_circle</span> Log Article
+                    </button>
+                </div>
+
+                <!-- LOGGED READINGS -->
+                <div id="readings-list" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                    <!-- Dynamic Log Lists -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ADD UNIVERSITY MODAL -->
+    <div id="uni-modal" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full shadow-2xl">
+            <h3 class="text-lg font-bold mb-4">Add Target University</h3>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">University Name</label>
+                    <input type="text" id="modal-name" placeholder="e.g., University of Santo Tomas" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Deadline Date</label>
+                    <input type="date" id="modal-deadline" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Required Papers</label>
+                    <input type="text" id="modal-papers" placeholder="e.g., Transcript, Recommendation, CV" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button onclick="toggleModal(false)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-4 py-2 rounded-xl transition">Cancel</button>
+                <button onclick="addUniversity()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-4 py-2 rounded-xl transition">Save Program</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECRET ADMIN SETTINGS TERMINAL MODAL -->
+    <div id="secret-admin-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur flex items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border border-red-500/30 rounded-2xl p-6 max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+                <h3 class="text-md font-bold text-red-400 flex items-center gap-2 font-mono">
+                    <span class="material-icons animate-pulse text-red-500 text-sm">terminal</span>
+                    SYSTEM PARAMETER TERMINAL v1.4
+                </h3>
+                <button onclick="toggleSecretModal(false)" class="text-slate-400 hover:text-slate-200">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+
+            <!-- ADMIN TABS -->
+            <div class="flex border-b border-slate-800 mb-4 gap-2 text-xs">
+                <button onclick="switchAdminTab('habits')" id="admin-tab-habits" class="px-3 py-1.5 font-bold rounded-t-lg bg-slate-800 text-white">Edit Habits</button>
+                <button onclick="switchAdminTab('quests')" id="admin-tab-quests" class="px-3 py-1.5 font-bold rounded-t-lg text-slate-400 hover:text-white">Edit Quests</button>
+                <button onclick="switchAdminTab('progression')" id="admin-tab-progression" class="px-3 py-1.5 font-bold rounded-t-lg text-slate-400 hover:text-white">Player State</button>
+            </div>
+
+            <!-- TAB CONTENT: EDIT HABITS -->
+            <div id="admin-content-habits" class="space-y-4 text-xs">
+                <p class="text-slate-400 italic">Modify titles and descriptions of daily checkpoints to align custom habits.</p>
+                <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    <div>
+                        <label class="block text-slate-400 mb-1">Habit 1 Title</label>
+                        <input type="text" id="admin-h1-title" class="w-full bg-slate-900 border border-slate-850 p-2 rounded text-slate-100">
+                        <label class="block text-slate-400 mt-2 mb-1">Description</label>
+                        <textarea id="admin-h1-desc" rows="2" class="w-full bg-slate-900 border border-slate-850 p-2 rounded text-slate-100"></textarea>
+                    </div>
+                    <div class="border-t border-slate-850 pt-3">
+                        <label class="block text-slate-400 mb-1">Habit 2 Title</label>
+                        <input type="text" id="admin-h2-title" class="w-full bg-slate-900 border border-slate-850 p-2 rounded text-slate-100">
+                        <label class="block text-slate-400 mt-2 mb-1">Description</label>
+                        <textarea id="admin-h2-desc" rows="2" class="w-full bg-slate-900 border border-slate-850 p-2 rounded text-slate-100"></textarea>
+                    </div>
+                    <div class="border-t border-slate-850 pt-3">
+                        <label class="block text-slate-400 mb-1">Habit 3 Title</label>
+                        <input type="text" id="admin-h3-title" class="w-full bg-slate-900 border border-slate-850 p-2 rounded text-slate-100">
+                        <label class="block text-slate-400 mt-2 mb-1">Description</label>
+                        <textarea id="admin-h3-desc" rows="2" class="w-full bg-slate-900 border border-slate-850 p-2 rounded text-slate-100"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT: EDIT QUESTS -->
+            <div id="admin-content-quests" class="hidden space-y-4 text-xs">
+                <p class="text-slate-400 italic">Edit campaign targets, current steps, or rewards. Changes save to local storage.</p>
+                <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                    <label class="block text-slate-400 mb-1">Select Campaign Quest to Edit</label>
+                    <select id="admin-quest-selector" onchange="loadAdminQuestValues()" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-200">
+                        <!-- Populated programmatically -->
+                    </select>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div>
+                            <label class="block text-slate-400 mb-1">Quest text description</label>
+                            <input type="text" id="admin-q-text" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1">Quest Reward (XP)</label>
+                            <input type="number" id="admin-q-reward" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1">Target steps (Maximum value)</label>
+                            <input type="number" id="admin-q-target" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1">Current progress</label>
+                            <input type="number" id="admin-q-current" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT: PROGRESSION STATE OVERRIDES -->
+            <div id="admin-content-progression" class="hidden space-y-4 text-xs">
+                <p class="text-slate-400 italic font-mono">Alter absolute developer states directly.</p>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-slate-400 mb-1">Set Level (1-3+)</label>
+                            <input type="number" id="admin-user-level" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-100">
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1">Set Experience (XP)</label>
+                            <input type="number" id="admin-user-xp" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-100">
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-slate-850">
+                        <label class="block text-slate-400 mb-1">Modify active Habit Win Streak</label>
+                        <input type="number" id="admin-streak" class="w-full bg-slate-900 border border-slate-800 p-2 rounded text-slate-100">
+                    </div>
+                </div>
+                <div class="bg-red-950/20 p-4 rounded-xl border border-red-900/30">
+                    <h4 class="font-bold text-red-400 mb-1">DANGER AREA</h4>
+                    <p class="text-[11px] text-slate-400 mb-3">Instantly erase all local storage matrices and return to clean clinical default values.</p>
+                    <button onclick="hardSystemReset()" class="bg-red-700 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded transition">Erase and Reinitialize</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center border-t border-slate-800 pt-4 mt-6">
+                <button onclick="restoreDefaultAdminSettings()" class="text-slate-400 hover:text-white underline text-[11px]">Restore Defaults</button>
+                <div class="flex gap-2">
+                    <button onclick="toggleSecretModal(false)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-4 py-2 rounded-xl transition">Close</button>
+                    <button onclick="saveSecretAdminSettings()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-4 py-2 rounded-xl transition font-semibold">Save parameters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Structures
+        let universityList = [];
+        let readingsLog = [];
+        let habitStreak = 0;
+        let todayCompleted = false;
+
+        let userXP = 0;
+        let userLevel = 1;
+        let activeQuestTab = 1;
+        let activeAdminTab = 'habits';
+
+        let secretClicksCount = 0;
+
+        // Default raw checklist definitions
+        let habitsData = [
+            { id: "habit-alarm", title: "The 6:30 AM Wake-Up Win", desc: "Woke up at 6:30 AM without hitting the snooze button. Immediate physical win over procrastinating." },
+            { id: "habit-desk", title: "The 3-Item Desk Clear", desc: "Exposed your workspace by putting away exactly three non-essential pieces of clutter before relaxing." },
+            { id: "habit-sleep", title: "The 10:30 PM Tech Blackout & Reading", desc: "Shut down your computer, placed your phone across the room to charge, and read your physical book in bed." }
+        ];
+
+        // Game Quests Definitions
+        let questsData = {
+            1: [
+                { id: "q_desk_clear", text: "Clean Desk Surface: Free your desk from clutter 5 separate days", target: 5, current: 0, reward: 50, completed: false },
+                { id: "q_tech_blackout", text: "10:30 PM Tech Blackout: Shut down PC and read physical book in bed 5 times", target: 5, current: 0, reward: 50, completed: false },
+                { id: "q_early_wake", text: "6:30 AM Wake Up Win: Wake up on time without snooze 5 times", target: 5, current: 0, reward: 50, completed: false }
+            ],
+            2: [
+                { id: "q_map_unis", text: "Map out 3 Universities: Research and save clinical programs in database", target: 3, current: 0, reward: 100, completed: false },
+                { id: "q_update_cv", text: "CV Technical Polish: Refine and save your technical test-administration bullet points", target: 1, current: 0, reward: 100, completed: false },
+                { id: "q_runway_check", text: "Runway Audit: Write down absolute minimum financial requirements for transition", target: 1, current: 0, reward: 80, completed: false }
+            ],
+            3: [
+                { id: "q_dawn_patrol", text: "Consistent 6:00 AM Wake: Shift your alarm successfully to 6:00 AM", target: 1, current: 0, reward: 150, completed: false },
+                { id: "q_japanese", text: "Expand Japanese: Read/review structured Japanese content for 10 straight days", target: 10, current: 0, reward: 150, completed: false },
+                { id: "q_meditate", text: "Breath Practice: Perform 5 minutes of formal meditation at your clean desk", target: 5, current: 0, reward: 120, completed: false }
+            ]
+        };
+
+        // Stoic quotes generator data
+        const stoicQuotes = [
+            { text: "Your dirty room represents a chaotic loop of thoughts. Expose the clean desk surface, clear your immediate workspace, and the mind will follow.", author: "Marcus Aurelius" },
+            { text: "Confusion is solved by active movement, not analytical loop-thinking. Gather the data, look at the escape numbers, and build the runway.", author: "Seneca" },
+            { text: "If you try to wake up at 6:00 AM immediately without earned sleep, you fail. Settle for 6:30 AM first and lock in the easy victory.", author: "Epictetus" },
+            { text: "Do not waste your empty work hours on gaming forums or scrolling. Keep a clinical psychology journal open. Turn employer electricity into your pivot fuel.", author: "Marcus Aurelius" },
+            { text: "It is not that we have a short time to live, but that we waste a lot of it by remaining stuck in environments we've outgrown.", author: "Seneca" }
+        ];
+
+        window.onload = function () {
+            // Load custom habits if they exist
+            if (localStorage.getItem('rpms_habits_custom')) {
+                habitsData = JSON.parse(localStorage.getItem('rpms_habits_custom'));
+            } else {
+                localStorage.setItem('rpms_habits_custom', JSON.stringify(habitsData));
+            }
+
+            if (localStorage.getItem('rpms_unis')) {
+                universityList = JSON.parse(localStorage.getItem('rpms_unis'));
+            } else {
+                universityList = [
+                    { id: 1, name: "UST Manila", deadline: "2026-10-15", papers: "Transcript, RPm Board rating, 2 Recom Letters", status: "Not Started" },
+                    { id: 2, name: "Ateneo de Manila", deadline: "2026-11-01", papers: "Official Transcript, Personal Statement, CV", status: "Not Started" }
+                ];
+                localStorage.setItem('rpms_unis', JSON.stringify(universityList));
+            }
+
+            if (localStorage.getItem('rpms_readings')) {
+                readingsLog = JSON.parse(localStorage.getItem('rpms_readings'));
+            } else {
+                readingsLog = [
+                    { id: 1, title: "Psychometric Assessment of Instrument Reliability in Clinical Populations" },
+                    { id: 2, title: "Cozy fantasy reading: Before the Coffee Gets Cold" }
+                ];
+                localStorage.setItem('rpms_readings', JSON.stringify(readingsLog));
+            }
+
+            if (localStorage.getItem('rpms_streak')) {
+                habitStreak = parseInt(localStorage.getItem('rpms_streak'));
+            }
+
+            if (localStorage.getItem('rpms_xp')) {
+                userXP = parseInt(localStorage.getItem('rpms_xp'));
+            }
+            if (localStorage.getItem('rpms_level')) {
+                userLevel = parseInt(localStorage.getItem('rpms_level'));
+            }
+
+            // Restore quests state or write default
+            if (localStorage.getItem('rpms_quests')) {
+                const savedQuests = JSON.parse(localStorage.getItem('rpms_quests'));
+                Object.keys(questsData).forEach(phase => {
+                    questsData[phase].forEach(q => {
+                        const saved = savedQuests[phase]?.find(sq => sq.id === q.id);
+                        if (saved) {
+                            q.text = saved.text || q.text;
+                            q.current = saved.current;
+                            q.target = saved.target;
+                            q.reward = saved.reward;
+                            q.completed = saved.completed;
+                        }
+                    });
+                });
+            } else {
+                saveQuestsToStorage();
+            }
+
+            // Trigger visual builders
+            buildHabitChecklistHTML();
+            refreshStreaks();
+            refreshUniversities();
+            refreshReadingsList();
+            refreshXPBar();
+            renderQuestBoard();
+            newStoicQuote();
+            setupCVHandlers();
+        };
+
+        function buildHabitChecklistHTML() {
+            const container = document.getElementById('habits-list-container');
+            container.innerHTML = '';
+
+            habitsData.forEach(h => {
+                const isChecked = localStorage.getItem(`h_${h.id}`) === 'true';
+                
+                const label = document.createElement('label');
+                label.className = "flex items-start gap-4 p-3 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700 transition";
+                label.innerHTML = `
+                    <input type="checkbox" id="${h.id}" onchange="evaluateHabitChange()" ${isChecked ? 'checked' : ''} class="mt-1 w-4 h-4 rounded border-slate-700 text-blue-600 focus:ring-blue-500 bg-slate-900">
+                    <div class="text-xs">
+                        <span class="font-bold text-slate-200">${h.title}</span>
+                        <p class="text-slate-400 mt-0.5">${h.desc}</p>
+                    </div>
+                `;
+                container.appendChild(label);
+            });
+        }
+
+        function setupCVHandlers() {
+            for (let i = 1; i <= 4; i++) {
+                if (document.getElementById(`cv-opt-${i}`)) {
+                    document.getElementById(`cv-opt-${i}`).checked = localStorage.getItem(`cv_opt_${i}`) === 'true';
+                    document.getElementById(`cv-opt-${i}`).addEventListener('change', function(e) {
+                        localStorage.setItem(`cv_opt_${i}`, e.target.checked);
+                        if (e.target.checked) {
+                            incrementQuestProgress('q_update_cv', 1);
+                        }
+                    });
+                }
+            }
+        }
+
+        function saveQuestsToStorage() {
+            localStorage.setItem('rpms_quests', JSON.stringify(questsData));
+        }
+
+        function addXP(amount) {
+            userXP += amount;
+            const xpNeeded = getXPNeededForLevel(userLevel);
+            
+            if (userXP >= xpNeeded) {
+                userXP -= xpNeeded;
+                userLevel++;
+                triggerLevelUpNotification();
+            }
+            
+            localStorage.setItem('rpms_xp', userXP);
+            localStorage.setItem('rpms_level', userLevel);
+            refreshXPBar();
+            renderQuestBoard();
+        }
+
+        function getXPNeededForLevel(level) {
+            if (level === 1) return 150;
+            if (level === 2) return 300;
+            return 500;
+        }
+
+        function refreshXPBar() {
+            const xpNeeded = getXPNeededForLevel(userLevel);
+            const percent = Math.min(100, (userXP / xpNeeded) * 100);
+            
+            document.getElementById('xp-bar').style.width = `${percent}%`;
+            document.getElementById('xp-display').innerText = `${userXP}/${xpNeeded} XP`;
+            
+            let rank = "Sleep Novice";
+            if (userLevel === 2) rank = "Clutter Conqueror";
+            if (userLevel >= 3) rank = "Escape Artist";
+            document.getElementById('char-level').innerText = `Level ${userLevel}: ${rank}`;
+
+            const badge = document.getElementById('current-phase-badge');
+            if (userLevel === 1) {
+                badge.innerText = "Phase 1 (July 2026)";
+                badge.className = "text-emerald-400 font-medium";
+            } else if (userLevel === 2) {
+                badge.innerText = "Phase 2 (August 2026)";
+                badge.className = "text-indigo-400 font-medium";
+            } else {
+                badge.innerText = "Phase 3 (September 2026)";
+                badge.className = "text-amber-400 font-medium";
+            }
+        }
+
+        function triggerLevelUpNotification() {
+            const levelHeader = document.getElementById('char-level');
+            levelHeader.classList.add('animate-bounce');
+            setTimeout(() => {
+                levelHeader.classList.remove('animate-bounce');
+            }, 1000);
+        }
+
+        function switchQuestTab(phaseNum) {
+            activeQuestTab = phaseNum;
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`tab-btn-${i}`);
+                if (i === phaseNum) {
+                    btn.className = "text-xs px-3 py-1.5 rounded-lg font-bold transition bg-blue-600 text-white";
+                } else {
+                    btn.className = "text-xs px-3 py-1.5 rounded-lg font-bold transition text-slate-400 hover:text-slate-200";
+                }
+            }
+            renderQuestBoard();
+        }
+
+        function renderQuestBoard() {
+            const container = document.getElementById('quest-board-content');
+            container.innerHTML = '';
+
+            const isLocked = (activeQuestTab === 2 && userLevel < 2) || (activeQuestTab === 3 && userLevel < 3);
+
+            if (isLocked) {
+                const requiredLevel = activeQuestTab;
+                container.innerHTML = `
+                    <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 rounded-xl z-10 border border-slate-800">
+                        <span class="material-icons text-slate-500 text-4xl mb-2">lock</span>
+                        <h4 class="text-sm font-bold text-slate-300">Phase Unlocks at Level ${requiredLevel}</h4>
+                        <p class="text-[11px] text-slate-500 max-w-xs mt-1 mb-4">Complete daily habits and clean your environment to level up and unlock this campaign.</p>
+                        <button onclick="forceUnlockPhase(${requiredLevel})" class="bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-200 text-[10px] px-3 py-1 rounded-lg border border-slate-700/60 transition">
+                            Override Lock (Skip Baseline)
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const quests = questsData[activeQuestTab];
+            const listWrapper = document.createElement('div');
+            listWrapper.className = "space-y-3";
+
+            quests.forEach(quest => {
+                const isCompleted = quest.completed;
+                const progressPct = Math.min(100, (quest.current / quest.target) * 100);
+
+                const questCard = document.createElement('div');
+                questCard.className = `p-4 bg-slate-950 rounded-xl border ${isCompleted ? 'border-emerald-500/30 bg-emerald-950/5' : 'border-slate-850'} flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition`;
+                questCard.innerHTML = `
+                    <div class="flex-1 space-y-1">
+                        <div class="flex items-center gap-2">
+                            <span class="material-icons text-sm ${isCompleted ? 'text-emerald-400' : 'text-slate-600'}">
+                                ${isCompleted ? 'check_circle' : 'hourglass_bottom'}
+                            </span>
+                            <span class="text-xs font-bold ${isCompleted ? 'text-slate-400 line-through' : 'text-slate-200'}">
+                                ${quest.text}
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2 text-[10px] text-slate-500">
+                            <span>Progress: ${quest.current}/${quest.target}</span>
+                            <div class="w-16 bg-slate-900 h-1 rounded overflow-hidden">
+                                <div class="bg-blue-500 h-full" style="width: ${progressPct}%"></div>
+                            </div>
+                            <span class="text-amber-400 font-semibold">+${quest.reward} XP Reward</span>
+                        </div>
+                    </div>
+                    ${!isCompleted ? `
+                        <button onclick="progressQuestManually('${quest.id}')" class="bg-slate-900 hover:bg-slate-850 text-slate-300 text-[10px] px-2.5 py-1 rounded-lg border border-slate-800 transition shrink-0 flex items-center gap-1">
+                            <span class="material-icons text-xs">add</span> Progress
+                        </button>
+                    ` : `
+                        <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Cleared</span>
+                    `}
+                `;
+                listWrapper.appendChild(questCard);
+            });
+
+            container.appendChild(listWrapper);
+        }
+
+        function forceUnlockPhase(requiredLevel) {
+            userLevel = requiredLevel;
+            userXP = 0;
+            localStorage.setItem('rpms_level', userLevel);
+            localStorage.setItem('rpms_xp', userXP);
+            refreshXPBar();
+            renderQuestBoard();
+        }
+
+        function incrementQuestProgress(questId, amount) {
+            Object.keys(questsData).forEach(phase => {
+                const quest = questsData[phase].find(q => q.id === questId);
+                if (quest && !quest.completed) {
+                    quest.current = Math.min(quest.target, quest.current + amount);
+                    if (quest.current >= quest.target) {
+                        quest.completed = true;
+                        addXP(parseInt(quest.reward));
+                    }
+                    saveQuestsToStorage();
+                    renderQuestBoard();
+                }
+            });
+        }
+
+        function progressQuestManually(questId) {
+            incrementQuestProgress(questId, 1);
+        }
+
+        function newStoicQuote() {
+            const randomIndex = Math.floor(Math.random() * stoicQuotes.length);
+            const quote = stoicQuotes[randomIndex];
+            document.getElementById('stoic-quote').innerText = `"${quote.text}"`;
+            document.getElementById('stoic-author').innerText = `— ${quote.author}`;
+        }
+
+        function toggleModal(show) {
+            const modal = document.getElementById('uni-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function addUniversity() {
+            const name = document.getElementById('modal-name').value;
+            const deadline = document.getElementById('modal-deadline').value;
+            const papers = document.getElementById('modal-papers').value;
+
+            if (!name || !deadline) return;
+
+            const newUni = {
+                id: Date.now(),
+                name,
+                deadline,
+                papers: papers || "None listed yet",
+                status: "Not Started"
+            };
+
+            universityList.push(newUni);
+            localStorage.setItem('rpms_unis', JSON.stringify(universityList));
+            refreshUniversities();
+            
+            incrementQuestProgress('q_map_unis', 1);
+            toggleModal(false);
+
+            document.getElementById('modal-name').value = '';
+            document.getElementById('modal-deadline').value = '';
+            document.getElementById('modal-papers').value = '';
+        }
+
+        function deleteUniversity(id) {
+            universityList = universityList.filter(uni => uni.id !== id);
+            localStorage.setItem('rpms_unis', JSON.stringify(universityList));
+            refreshUniversities();
+        }
+
+        function updateUniStatus(id, selectElement) {
+            const status = selectElement.value;
+            const uniIndex = universityList.findIndex(uni => uni.id === id);
+            if (uniIndex !== -1) {
+                universityList[uniIndex].status = status;
+                localStorage.setItem('rpms_unis', JSON.stringify(universityList));
+            }
+        }
+
+        function refreshUniversities() {
+            const container = document.getElementById('university-container');
+            container.innerHTML = '';
+
+            if (universityList.length === 0) {
+                container.innerHTML = `<div class="col-span-2 text-center py-6 text-slate-500 text-xs">No programs mapped. Saturday research time!</div>`;
+                return;
+            }
+
+            universityList.forEach(uni => {
+                const isSelected = (status) => uni.status === status ? 'selected' : '';
+                const card = document.createElement('div');
+                card.className = "p-4 bg-slate-950 rounded-xl border border-slate-800 flex flex-col justify-between gap-3 text-xs";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start gap-2">
+                            <strong class="text-slate-100 text-sm tracking-tight">${uni.name}</strong>
+                            <button onclick="deleteUniversity(${uni.id})" class="text-rose-400 hover:text-rose-300">
+                                <span class="material-icons text-base">delete</span>
+                            </button>
+                        </div>
+                        <p class="text-slate-400 mt-1 flex items-center gap-1">
+                            <span class="material-icons text-xs text-blue-400">event</span>
+                            Deadline: ${uni.deadline}
+                        </p>
+                        <p class="text-slate-400 mt-1 flex items-center gap-1">
+                            <span class="material-icons text-xs text-indigo-400">description</span>
+                            Needs: ${uni.papers}
+                        </p>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-slate-900 pt-2 mt-2">
+                        <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Progress Status</span>
+                        <select onchange="updateUniStatus(${uni.id}, this)" class="bg-slate-900 border border-slate-800 rounded px-2 py-1 text-[11px] text-slate-200 focus:outline-none">
+                            <option value="Not Started" ${isSelected('Not Started')}>Not Started</option>
+                            <option value="Researching" ${isSelected('Researching')}>Researching</option>
+                            <option value="Applying" ${isSelected('Applying')}>Applying</option>
+                            <option value="Complete" ${isSelected('Complete')}>Complete</option>
+                        </select>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function addReadingLog() {
+            const input = document.getElementById('reading-input');
+            const title = input.value.trim();
+
+            if (!title) return;
+
+            const log = { id: Date.now(), title };
+            readingsLog.unshift(log);
+            localStorage.setItem('rpms_readings', JSON.stringify(readingsLog));
+            refreshReadingsList();
+            input.value = '';
+
+            addXP(20);
+        }
+
+        function deleteReadingLog(id) {
+            readingsLog = readingsLog.filter(log => log.id !== id);
+            localStorage.setItem('rpms_readings', JSON.stringify(readingsLog));
+            refreshReadingsList();
+        }
+
+        function refreshReadingsList() {
+            const container = document.getElementById('readings-list');
+            container.innerHTML = '';
+
+            if (readingsLog.length === 0) {
+                container.innerHTML = `<p class="text-center text-xs text-slate-500 py-3">No articles logged during work dead time yet.</p>`;
+                return;
+            }
+
+            readingsLog.forEach(log => {
+                const item = document.createElement('div');
+                item.className = "flex items-center justify-between gap-3 p-2.5 bg-slate-950 rounded-lg border border-slate-800 text-[11px]";
+                item.innerHTML = `
+                    <div class="flex items-center gap-2 overflow-hidden">
+                        <span class="material-icons text-amber-500 text-xs shrink-0 font-medium">check_circle</span>
+                        <span class="text-slate-300 truncate">${log.title}</span>
+                    </div>
+                    <button onclick="deleteReadingLog(${log.id})" class="text-rose-400 hover:text-rose-300 font-bold shrink-0">
+                        <span class="material-icons text-sm">remove_circle_outline</span>
+                    </button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function triggerSecretConsole() {
+            secretClicksCount++;
+            if (secretClicksCount >= 5) {
+                secretClicksCount = 0;
+                toggleSecretModal(true);
+            }
+        }
+
+        function toggleSecretModal(show) {
+            const modal = document.getElementById('secret-admin-modal');
+            if (show) {
+                populateAdminValues();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function switchAdminTab(tabName) {
+            activeAdminTab = tabName;
+            ['habits', 'quests', 'progression'].forEach(t => {
+                const btn = document.getElementById(`admin-tab-${t}`);
+                const section = document.getElementById(`admin-content-${t}`);
+                if (t === tabName) {
+                    btn.className = "px-3 py-1.5 font-bold rounded-t-lg bg-slate-800 text-white";
+                    section.classList.remove('hidden');
+                } else {
+                    btn.className = "px-3 py-1.5 font-bold rounded-t-lg text-slate-400 hover:text-white";
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        function populateAdminValues() {
+            // Load habits
+            document.getElementById('admin-h1-title').value = habitsData[0]?.title || '';
+            document.getElementById('admin-h1-desc').value = habitsData[0]?.desc || '';
+            document.getElementById('admin-h2-title').value = habitsData[1]?.title || '';
+            document.getElementById('admin-h2-desc').value = habitsData[1]?.desc || '';
+            document.getElementById('admin-h3-title').value = habitsData[2]?.title || '';
+            document.getElementById('admin-h3-desc').value = habitsData[2]?.desc || '';
+
+            // Load quests dropdown options
+            const select = document.getElementById('admin-quest-selector');
+            select.innerHTML = '';
+            Object.keys(questsData).forEach(phase => {
+                questsData[phase].forEach(q => {
+                    const opt = document.createElement('option');
+                    opt.value = q.id;
+                    opt.innerText = `[Phase ${phase}] ${q.text.substring(0, 35)}...`;
+                    select.appendChild(opt);
+                });
+            });
+
+            loadAdminQuestValues();
+
+            // Load stats
+            document.getElementById('admin-user-level').value = userLevel;
+            document.getElementById('admin-user-xp').value = userXP;
+            document.getElementById('admin-streak').value = habitStreak;
+        }
+
+        function loadAdminQuestValues() {
+            const questId = document.getElementById('admin-quest-selector').value;
+            let targetQuest = null;
+            Object.keys(questsData).forEach(phase => {
+                const found = questsData[phase].find(q => q.id === questId);
+                if (found) targetQuest = found;
+            });
+
+            if (targetQuest) {
+                document.getElementById('admin-q-text').value = targetQuest.text;
+                document.getElementById('admin-q-reward').value = targetQuest.reward;
+                document.getElementById('admin-q-target').value = targetQuest.target;
+                document.getElementById('admin-q-current').value = targetQuest.current;
+            }
+        }
+
+        function saveSecretAdminSettings() {
+            // Save Habits
+            habitsData[0].title = document.getElementById('admin-h1-title').value;
+            habitsData[0].desc = document.getElementById('admin-h1-desc').value;
+            habitsData[1].title = document.getElementById('admin-h2-title').value;
+            habitsData[1].desc = document.getElementById('admin-h2-desc').value;
+            habitsData[2].title = document.getElementById('admin-h3-title').value;
+            habitsData[2].desc = document.getElementById('admin-h3-desc').value;
+            localStorage.setItem('rpms_habits_custom', JSON.stringify(habitsData));
+
+            // Save Quests
+            const questId = document.getElementById('admin-quest-selector').value;
+            Object.keys(questsData).forEach(phase => {
+                const q = questsData[phase].find(q => q.id === questId);
+                if (q) {
+                    q.text = document.getElementById('admin-q-text').value;
+                    q.reward = parseInt(document.getElementById('admin-q-reward').value);
+                    q.target = parseInt(document.getElementById('admin-q-target').value);
+                    q.current = parseInt(document.getElementById('admin-q-current').value);
+                    q.completed = (q.current >= q.target);
+                }
+            });
+            saveQuestsToStorage();
+
+            // Save Player stats overrides
+            userLevel = parseInt(document.getElementById('admin-user-level').value);
+            userXP = parseInt(document.getElementById('admin-user-xp').value);
+            habitStreak = parseInt(document.getElementById('admin-streak').value);
+
+            localStorage.setItem('rpms_level', userLevel);
+            localStorage.setItem('rpms_xp', userXP);
+            localStorage.setItem('rpms_streak', habitStreak);
+
+            // Re-render and apply
+            buildHabitChecklistHTML();
+            refreshStreaks();
+            refreshXPBar();
+            renderQuestBoard();
+            toggleSecretModal(false);
+        }
+
+        function restoreDefaultAdminSettings() {
+            localStorage.removeItem('rpms_habits_custom');
+            localStorage.removeItem('rpms_quests');
+            location.reload();
+        }
+
+        function hardSystemReset() {
+            localStorage.clear();
+            location.reload();
+        }
+
+        function evaluateHabitChange() {
+            habitsData.forEach(h => {
+                const el = document.getElementById(h.id);
+                if (el) {
+                    localStorage.setItem(`h_${h.id}`, el.checked);
+                }
+            });
+
+            const isH1 = document.getElementById(habitsData[0].id)?.checked;
+            const isH2 = document.getElementById(habitsData[1].id)?.checked;
+            const isH3 = document.getElementById(habitsData[2].id)?.checked;
+
+            if (isH1) incrementQuestProgress('q_early_wake', 1);
+            if (isH2) incrementQuestProgress('q_desk_clear', 1);
+            if (isH3) incrementQuestProgress('q_tech_blackout', 1);
+
+            if (isH1 && isH2 && isH3 && !todayCompleted) {
+                habitStreak++;
+                todayCompleted = true;
+                localStorage.setItem('rpms_streak', habitStreak);
+                localStorage.setItem('rpms_completed_today', 'true');
+                addXP(30);
+                refreshStreaks();
+            } else if ((!isH1 || !isH2 || !isH3) && todayCompleted) {
+                habitStreak = Math.max(0, habitStreak - 1);
+                todayCompleted = false;
+                localStorage.setItem('rpms_streak', habitStreak);
+                localStorage.setItem('rpms_completed_today', 'false');
+                refreshStreaks();
+            }
+        }
+
+        function resetDailyCheckboxes() {
+            habitsData.forEach(h => {
+                const el = document.getElementById(h.id);
+                if (el) el.checked = false;
+                localStorage.setItem(`h_${h.id}`, 'false');
+            });
+
+            todayCompleted = false;
+            localStorage.setItem('rpms_completed_today', 'false');
+            evaluateHabitChange();
+        }
+
+        function refreshStreaks() {
+            document.getElementById('streak-counter').innerText = habitStreak;
+            if (habitStreak > 0) {
+                document.getElementById('streak-info').innerText = `Epic win streak active! Keep going.`;
+            } else {
+                document.getElementById('streak-info').innerText = `Complete all 3 habits to increment your daily escape streak.`;
+            }
+        }
+
+        let timerSeconds = 300;
+        let timerInterval = null;
+
+        function toggleTimer() {
+            const btn = document.getElementById('timer-btn');
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                btn.innerText = "Start Clear";
+                btn.className = "bg-blue-600 hover:bg-blue-500 text-white text-xs px-4 py-2 rounded-lg font-semibold transition";
+            } else {
+                timerInterval = setInterval(() => {
+                    timerSeconds--;
+                    updateTimerDisplay();
+
+                    if (timerSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        timerSeconds = 300;
+                        btn.innerText = "Start Clear";
+                        btn.className = "bg-blue-600 hover:bg-blue-500 text-white text-xs px-4 py-2 rounded-lg font-semibold transition";
+                        
+                        const deskCheck = document.getElementById(habitsData[1].id);
+                        if (deskCheck) deskCheck.checked = true;
+                        evaluateHabitChange();
+                    }
+                }, 1000);
+                btn.innerText = "Pause Timer";
+                btn.className = "bg-rose-600 hover:bg-rose-500 text-white text-xs px-4 py-2 rounded-lg font-semibold transition";
+            }
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            const displayStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('timer-display').innerText = displayStr;
+        }
+    </script>
+</body>
+</html>
